@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mad Libs Huzzah</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Welcome to Mad Libs!</h1>
+  <h3>Choose Wisely...</h3>
+  <p id="instructions">Welcome to Mad Libs! You know the drill: choose four words of each word type (nouns, verbs, adjectives, adverbs), 
+    each separated by a single comma--no space. Choose a story, and we're off to enjoy hours of unique literature at your very own hand!
+  </p>
+  <div class="word-type-select">
+    <label>Nouns: </label>
+    <input id="nouns" type="text">
+  </div>
+  <div class="word-type-select">
+    <label>Verbs: </label>
+    <input id="verbs" type="text">
+  </div>
+  <div class="word-type-select">
+    <label>Adjectives: </label>
+    <input id="adjectives" type="text">
+  </div>
+  <div class="word-type-select">
+    <label>Adverbs: </label>
+    <input id="adverbs" type="text">
+  </div>
+  <div id="button-container">
+    <input id="go-christmas" class="checkbox" name="story-type" type="radio" checked>
+    <label>Christmas</label>
+
+    <input id="go-halloween" class="checkbox" name="story-type" type="radio">
+    <label>Halloween</label>
+    
+    <input id="go-idaho" class="checkbox" name="story-type" type="radio">
+    <label>Idaho</label>
+  </div>
+  <div id="generate-button-container">
+    <button class="generate-story-button">Your Story</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!-- <div class="girl-name">
+    <label>Girl Name:</label>
+    <input id="yes-girl" class="checkbox" name="gender" type="radio">
+  </div> -->

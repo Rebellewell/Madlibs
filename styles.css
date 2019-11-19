@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #cccccc;
+  background-color: #6bacc0;
 }
 
 h1 {
@@ -16,6 +16,11 @@ h3 {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+}
+
+#instructions {
+  margin-left: 250px;
+  margin-right: 250px;
 }
 
 .word-type-select {
@@ -42,7 +47,7 @@ label {
 }
 
 .generate-story-button {
-  background-color: slategray;
+  background-color: rgb(7, 46, 85);
   border: none;
   color: white;
   padding: 15px 32px;
@@ -50,4 +55,10 @@ label {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+#story-container {
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 75px;
 }

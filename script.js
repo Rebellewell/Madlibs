@@ -8,15 +8,12 @@ function storyHandler() {
   var userWords = getUserWords();
   console.log(userWords);
 
-
 // fill remaining space with backup words to get final owrds
+  var finalWords = getBackupWords(userWords);
 
 // grab the appropriate story string
   var storyText = getStory();
-
-// fill the story string with our final words
-  var finalWords = getUserWords(); 
-
+  
 // get the final story with words inputted
   var finalStory = getFilledStory(storyText, finalWords);
 
@@ -33,6 +30,38 @@ function getUserWords() {
   }
 }
 
+function getBackupWords(userWords) {
+  // add random word while length of arr is less than 4 
+  while (userWords.nouns.length < 4) {
+    var randomBackupWord = getRandEl(backupWords.nouns);
+    userWords.nouns.push(randomBackupWord);
+  }
+  return userWords;
+}
+
+
+
+
+
+
+function getRandEl(arr) {
+  return arr[getRandNum(0, arr.length - 1)];
+}
+
+function randFilteredElem(arr, filter) {
+  var randEl = getRandEl(arr);
+  while (randEl === filter) {
+    randEl = getRandEl(arr);
+  }
+  return randEl;
+}
+
+function getRandNum(min,max) {
+  return Math.floor(Math.random() * (max + 1 - min) + min);
+}
+
+
+
 function getStory() {
   var isChristmas = document.getElementById('go-christmas').checked;
   var isShopping = document.getElementById('go-shopping').checked;
@@ -46,6 +75,7 @@ function getStory() {
     return stories.brainstorm;
   }
 }
+
 // get an array of words entered by user for this word type
 function getUserWordsForType(wordType) {
   var rawStrInput = document.getElementById(wordType).value;
@@ -54,7 +84,6 @@ function getUserWordsForType(wordType) {
 }
 
 // dispaly chosen story in DOM
-
 function displayStory(storyStr) {
   storyContainer.innerText = storyStr;
 }

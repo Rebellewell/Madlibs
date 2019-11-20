@@ -46,7 +46,7 @@ label {
   margin-top: 20px;
 }
 
-.generate-story-button {
+#generate-story-button {
   background-color: rgb(7, 46, 85);
   border: none;
   color: white;

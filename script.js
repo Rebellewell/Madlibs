@@ -12,17 +12,13 @@ function storyHandler() {
 // fill remaining space with backup words to get final owrds
 
 // grab the appropriate story string
+  var storyText = getStory();
 
 // fill the story string with our final words
-  var finalWords = getUserWords();  
-    
-    // nouns: ['NOUN','NOUN','NOUN','NOUN'],
-    // verbs: ['VERB','VERB','VERB','VERB'],
-    // adjectives: ['ADJECTIVE','ADJECTIVE','ADJECTIVE','ADJECTIVE'],
-    // adverbs: ['ADVERB','ADVERB','ADVERB','ADVERB']
-  
-  
-  var finalStory = getFilledStory(stories.christmas, finalWords);
+  var finalWords = getUserWords(); 
+
+// get the final story with words inputted
+  var finalStory = getFilledStory(storyText, finalWords);
 
 // show final story (filled out) in the DOM
   displayStory(finalStory);
@@ -37,19 +33,19 @@ function getUserWords() {
   }
 }
 
-// function getStory() {
-//   var isChristmas = document.getElementById('go-christmas').checked;
-//   var isShopping = document.getElementById('go-shopping').checked;
-//   var isBrainstorm = document.getElementById('go-brainstorm').checked;
+function getStory() {
+  var isChristmas = document.getElementById('go-christmas').checked;
+  var isShopping = document.getElementById('go-shopping').checked;
+  var isBrainstorm = document.getElementById('go-brainstorm').checked;
   
-//   if (isChristmas) {
-//     return stories.christmas;
-//   } else if (isShopping) {
-//     return stories.shopping;
-//   } else if (isBrainstorm) {
-//     return stories.brainstorm;
-//   }
-
+  if (isChristmas) {
+    return stories.christmas;
+  } else if (isShopping) {
+    return stories.shopping;
+  } else if (isBrainstorm) {
+    return stories.brainstorm;
+  }
+}
 // get an array of words entered by user for this word type
 function getUserWordsForType(wordType) {
   var rawStrInput = document.getElementById(wordType).value;

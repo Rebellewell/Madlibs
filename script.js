@@ -30,6 +30,15 @@ function getUserWords() {
   }
 }
 
+// function getBackupWords(userWords) {
+//   // add random word while length of arr is less than 4 
+//   while (userWords.nouns.length < 4 || userWords.nouns === ['']) {
+//     var randomBackupWord = getRandEl(backupWords.nouns);
+//     userWords.nouns.push(randomBackupWord);
+//   }
+//   return userWords;
+// }
+
 function getBackupWords(userWords) {
   // add random word while length of arr is less than 4 
   while (userWords.nouns.length < 4) {
@@ -37,11 +46,22 @@ function getBackupWords(userWords) {
     userWords.nouns.push(randomBackupWord);
   }
   return userWords;
+  while (userWords.verbs.length < 4) {
+    var randomBackupWord = getRandEl(backupWords.verbs);
+    userWords.verbs.push(randomBackupWord);
+  }
+  return userWords;
+  while (userWords.adjectives.length < 4) {
+    var randomBackupWord = getRandEl(backupWords.adjectives);
+    userWords.adjectives.push(randomBackupWord);
+  }
+  return userWords;
+  while (userWords.adverbs.length < 4) {
+    var randomBackupWord = getRandEl(backupWords.adverbs);
+    userWords.adverbs.push(randomBackupWord);
+  }
+  return userWords;
 }
-
-
-
-
 
 
 function getRandEl(arr) {
@@ -88,7 +108,7 @@ function displayStory(storyStr) {
   storyContainer.innerText = storyStr;
 }
 
-// returns a new version of the story where ll the word spaces are filled in
+// returns a new version of the story where all the word spaces are filled in
 function getFilledStory(storyStr, finalWords) {
   for (var i = 0; i < 4; i++) {
     storyStr = storyStr.replace('{{noun}}', finalWords.nouns[i]);

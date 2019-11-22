@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 
+
+
 body {
   background-color: #6bacc0;
 }
@@ -61,4 +63,19 @@ label {
   margin-left: 200px;
   margin-right: 200px;
   margin-top: 75px;
+}
+
+@media (min-width:320px) and (max-width:900px) {
+  #instructions {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+  #story-container {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 35px;
+}
+  h1 {
+    text-align: center;
+  }
 }

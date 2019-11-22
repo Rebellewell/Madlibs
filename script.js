@@ -1,6 +1,6 @@
 var storyBtn = document.getElementById('generate-story-button');
 var storyContainer = document.getElementById('story-container');
-var nounInputEl = document.getElementById('nouns'); 
+var wordInputEl = document.getElementsByClassName('word-type-select').value; 
 
 storyBtn.addEventListener('click', storyHandler);
 
@@ -30,32 +30,24 @@ function getUserWords() {
   }
 }
 
-// function getBackupWords(userWords) {
-//   // add random word while length of arr is less than 4 
-//   while (userWords.nouns.length < 4 || userWords.nouns === ['']) {
-//     var randomBackupWord = getRandEl(backupWords.nouns);
-//     userWords.nouns.push(randomBackupWord);
-//   }
-//   return userWords;
-// }
 
 function getBackupWords(userWords) {
-  // add random word while length of arr is less than 4 
+  // add random word while length of arr is less than 4
   while (userWords.nouns.length < 4) {
     var randomBackupWord = getRandEl(backupWords.nouns);
     userWords.nouns.push(randomBackupWord);
   }
-  return userWords;
+  
   while (userWords.verbs.length < 4) {
     var randomBackupWord = getRandEl(backupWords.verbs);
     userWords.verbs.push(randomBackupWord);
   }
-  return userWords;
+  
   while (userWords.adjectives.length < 4) {
     var randomBackupWord = getRandEl(backupWords.adjectives);
     userWords.adjectives.push(randomBackupWord);
   }
-  return userWords;
+  
   while (userWords.adverbs.length < 4) {
     var randomBackupWord = getRandEl(backupWords.adverbs);
     userWords.adverbs.push(randomBackupWord);
@@ -80,8 +72,6 @@ function getRandNum(min,max) {
   return Math.floor(Math.random() * (max + 1 - min) + min);
 }
 
-
-
 function getStory() {
   var isChristmas = document.getElementById('go-christmas').checked;
   var isShopping = document.getElementById('go-shopping').checked;
@@ -100,6 +90,9 @@ function getStory() {
 function getUserWordsForType(wordType) {
   var rawStrInput = document.getElementById(wordType).value;
   var inputWords = rawStrInput.split(',');
+  if (rawStrInput === '') {
+    return [];
+  }
   return inputWords;
 }
 

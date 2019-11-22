@@ -1,6 +1,5 @@
 var storyBtn = document.getElementById('generate-story-button');
 var storyContainer = document.getElementById('story-container');
-//var wordInputEl = document.getElementsByClassName('word-type-select').value; 
 
 storyBtn.addEventListener('click', storyHandler);
 
@@ -21,6 +20,7 @@ function storyHandler() {
   displayStory(finalStory);
 }
 
+// returns OBJECT with key and value(funtion getUserWordsForType())
 function getUserWords() {
   return {
     nouns: getUserWordsForType('nouns'),
@@ -28,28 +28,17 @@ function getUserWords() {
     adjectives: getUserWordsForType('adjectives'),
     adverbs: getUserWordsForType('adverbs')
   }
-}
+} // returns object with key and value containing array of user input words
 
 function getBackupWords(userWords) {
   // add random word while length of arr is less than 4
-  while (userWords.nouns.length < 4) {
-    var randomBackupWord = getRandEl(backupWords.nouns);
-    userWords.nouns.push(randomBackupWord);
-  }
-  
-  while (userWords.verbs.length < 4) {
-    var randomBackupWord = getRandEl(backupWords.verbs);
-    userWords.verbs.push(randomBackupWord);
-  }
-  
-  while (userWords.adjectives.length < 4) {
-    var randomBackupWord = getRandEl(backupWords.adjectives);
-    userWords.adjectives.push(randomBackupWord);
-  }
-  
-  while (userWords.adverbs.length < 4) {
-    var randomBackupWord = getRandEl(backupWords.adverbs);
-    userWords.adverbs.push(randomBackupWord);
+  // looping over each word type (i.e. nouns, verbs,etc.)
+  for (var wordType in userWords) {
+    // adding backup words as necessary to our list of this type of word
+    while (userWords[wordType].length < 4) {
+      var randomBackupWord = getRandFilteredElem(backupWords[wordType], userWords[wordType]);
+      userWords[wordType].push(randomBackupWord);
+    }
   }
   return userWords;
 }
@@ -58,9 +47,9 @@ function getRandEl(arr) {
   return arr[getRandNum(0, arr.length - 1)];
 }
 
-function randFilteredElem(arr, filter) {
+function getRandFilteredElem(arr, filter) {
   var randEl = getRandEl(arr);
-  while (randEl === filter) {
+  while (filter.includes(randEl)) {
     randEl = getRandEl(arr);
   }
   return randEl;
@@ -71,22 +60,13 @@ function getRandNum(min,max) {
 }
 
 function getStory() {
-  var isChristmas = document.getElementById('go-christmas').checked;
-  var isShopping = document.getElementById('go-shopping').checked;
-  var isBrainstorm = document.getElementById('go-brainstorm').checked;
-  
-  if (isChristmas) {
-    return stories.christmas;
-  } else if (isShopping) {
-    return stories.shopping;
-  } else if (isBrainstorm) {
-    return stories.brainstorm;
-  }
+  var selectedStory = document.querySelector('#button-container input:checked').value;
+  return stories[selectedStory];
 }
 
 // get an array of words entered by user for this word type
 function getUserWordsForType(wordType) {
-  var rawStrInput = document.getElementById(wordType).value;
+  var rawStrInput = document.getElementById(wordType).value; //wordType is the parameter that refers back to getUserWords function above
   var inputWords = rawStrInput.split(',');
   if (rawStrInput === '') {
     return [];

@@ -1,6 +1,6 @@
 var storyBtn = document.getElementById('generate-story-button');
 var storyContainer = document.getElementById('story-container');
-var wordInputEl = document.getElementsByClassName('word-type-select').value; 
+//var wordInputEl = document.getElementsByClassName('word-type-select').value; 
 
 storyBtn.addEventListener('click', storyHandler);
 
@@ -30,7 +30,6 @@ function getUserWords() {
   }
 }
 
-
 function getBackupWords(userWords) {
   // add random word while length of arr is less than 4
   while (userWords.nouns.length < 4) {
@@ -54,7 +53,6 @@ function getBackupWords(userWords) {
   }
   return userWords;
 }
-
 
 function getRandEl(arr) {
   return arr[getRandNum(0, arr.length - 1)];

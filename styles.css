@@ -62,7 +62,7 @@ label {
 #story-container {
   margin-left: 200px;
   margin-right: 200px;
-  margin-top: 75px;
+  margin-top: 35px;
 }
 
 @media (min-width:320px) and (max-width:900px) {
